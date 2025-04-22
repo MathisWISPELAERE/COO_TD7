@@ -2,56 +2,32 @@ import java.util.ArrayList;
 
 public class Telecommande {
 
-    public ArrayList<Object> appareils;
+    public ArrayList<Appareil> appareils;
 
     public Telecommande() {
-        this.appareils = new ArrayList<Object>();
+        this.appareils = new ArrayList<Appareil>();
     }
 
-    public void ajouterLampe(Lampe a) {
+    public void ajouterAppareil(Appareil a) {
         this.appareils.add(a);
     }
 
-    public void ajouterHifi(Hifi h) {
-        this.appareils.add(h);
-    }
-
-
     public void activer(int n) {
-        if (this.appareils.get(n) instanceof Hifi) {
-            Hifi h = (Hifi) this.appareils.get(n);
-            h.allumer();
-        } else {
-            Lampe h = (Lampe) this.appareils.get(n);
-            h.allumer();
-        }
+        Appareil a = this.appareils.get(n);
+        a.allumer();
     }
 
     public void desactiver(int n) {
-        if (!(n > this.appareils.size())) {
-            if (this.appareils.get(n) instanceof Hifi) {
-                Hifi h = (Hifi) this.appareils.get(n);
-                h.eteindre();
-            } else {
-                Lampe h = (Lampe) this.appareils.get(n);
-                h.eteindre();
-            }
-        }
+        Appareil a = this.appareils.get(n);
+        a.eteindre();
     }
 
     public void activerTout() {
         if (!this.appareils.isEmpty()) {
-            for (int i = 0; i < this.appareils.size(); i++) {
-                if (this.appareils.get(i) instanceof Hifi) {
-                    Hifi h = (Hifi) this.appareils.get(i);
-                    h.allumer();
-                } else {
-                    Lampe h = (Lampe) this.appareils.get(i);
-                    h.allumer();
-                }
+            for (Appareil a : this.appareils) {
+                a.allumer();
             }
         }
-
     }
 
     public String toString() {
