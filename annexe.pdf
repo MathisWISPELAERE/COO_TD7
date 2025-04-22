@@ -1,0 +1,196 @@
+TAHRI Maryam et WISPELAERE Mathis
+
+=======================================================================
+                        Annexe Question 2
+=======================================================================
+
+@startuml
+
+class Lampe{
+  + Lampe(nom : String)
+  - nom : String
+  - allume : Boolean
+  +allumer()
+  +eteindre()
+  
+}
+class Telecommande{
+  - lampes: List<Lampe>      
+  - hifis: List<Hifi>
+  + ajouterLampe(l:Lampe)    
+  + ajouterHifi(h:Hifi)      
+  + activerLampe(i:int)      
+  + activerHifi(i:int)       
+  + activerTout()   
+  }
+
+class TestTelecommande{
+  +testTelecommande()
+  +testAjouterLampeVide()
+  +testAjouterLampe1elt()
+  +testActivationLampe()
+  +testActitavtionLampeIndice1()
+  +testActitavtionLampeInexistante()
+
+}
+
+class LampeTest{
+  +testLampe()
+  +testAllumer()
+  +testAllumer_allumee()
+  +testeteindre_allumee()
+  +testToString_eteinte()
+  +testToString_allumee()
+}
+
+class Hifi{
+ - son : int
+ + allumer()
+ +eteindre()
+ +toString()
+
+}
+
+
+Telecommande "1"-->"*" Lampe : - lampes
+Telecommande "*"-->"*" Hifi : - son
+
+@enduml 
+
+
+=======================================================================
+                        Annexe Question 4
+=======================================================================
+
+
+@startuml
+
+class Lampe{
+  + Lampe(nom : String)
+  - nom : String
+  - allume : Boolean
+  +allumer()
+  +eteindre()
+  
+}
+class Telecommande{
+  - lampes: List<Lampe>      
+  - hifis: List<Hifi>
+  - teles: List<Television>
+  + ajouterLampe(l:Lampe)    
+  + ajouterHifi(h:Hifi)
+  + ajouterTele(t:Televison)       
+  + activerLampe(i:int)      
+  + activerHifi(i:int) 
+  + activerTele(i:int)  
+  + activerTout()   
+  }
+
+class TestTelecommande{
+  +testTelecommande()
+  +testAjouterLampeVide()
+  +testAjouterLampe1elt()
+  +testActivationLampe()
+  +testActitavtionLampeIndice1()
+  +testActitavtionLampeInexistante()
+
+}
+
+class LampeTest{
+  +testLampe()
+  +testAllumer()
+  +testAllumer_allumee()
+  +testeteindre_allumee()
+  +testToString_eteinte()
+  +testToString_allumee()
+}
+
+class Hifi{
+ - son : int
+ + allumer()
+ +eteindre()
+ +toString()
+
+}
+
+class Television{
+
+}
+
+
+
+
+Telecommande "1"-->"*" Lampe : - lampes
+Telecommande "*"-->"*" Hifi : - son
+Telecommande "*"-->"*" Television : - allume
+
+@enduml 
+
+=======================================================================
+                        Annexe Question 8
+=======================================================================
+
+
+@startuml
+
+class Lampe{
+  + Lampe(nom : String)
+  - nom : String
+  - allume : Boolean
+  +allumer()
+  +eteindre()
+  
+}
+class Telecommande{
+  - appareils: List<Appareil>      
+  + ajouterAppareil(a:Appareil)           
+  + activerAppareil(i:int)       
+  + activerTout()   
+  }
+
+class TestTelecommande{
+  +testTelecommande()
+  +testAjouterLampeVide()
+  +testAjouterLampe1elt()
+  +testActivationLampe()
+  +testActitavtionLampeIndice1()
+  +testActitavtionLampeInexistante()
+
+}
+
+class LampeTest{
+  +testLampe()
+  +testAllumer()
+  +testAllumer_allumee()
+  +testeteindre_allumee()
+  +testToString_eteinte()
+  +testToString_allumee()
+}
+
+class Hifi{
+ - son : int
+ + allumer()
+ +eteindre()
+ +toString()
+
+}
+
+class Television{
+
+}
+
+Interface Appareil{
+  +{abstract} ajouterAppareil(a:Appareil)    
+  +{abstract} activerAppareil(i:int) 
+
+}
+
+
+
+
+Telecommande --> Appareil : utilise
+Appareil<|.. Hifi 
+Appareil <|.. Lampe
+Appareil <|.. Television 
+
+@enduml 
